@@ -1,0 +1,48 @@
+@import "../../styles";
+
+.layout {
+  height: 100vh;
+  width: 100%;
+  @include flex(column, stretch, flex-start);
+  overflow: hidden;
+
+  & > .bottom {
+    flex: 1;
+    height: 1rem;
+    @include flex(row, stretch, flex-start);
+    & .sidebar {
+      width: 270px;
+      @include query(900px) {
+        @include position(fixed, 7rem, 0, 0, 0);
+        background-color: $light-gray;
+        width: unset;
+        z-index: 500;
+        transform: translate(-100%, 0);
+        transition: transform 200ms;
+
+        &.open {
+          transform: unset;
+        }
+      }
+    }
+    & .page {
+      flex: 1;
+      height: 100%;
+      & > .wrapper {
+        height: inherit;
+        padding: 20px;
+        padding-left: 0;
+        padding-top: 0;
+        @include query(900px) {
+          padding-left: 20px;
+        }
+        & > .container {
+          height: 100%;
+          background-color: $white;
+          overflow: hidden;
+          border-radius: 1rem;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,208 @@
+@import "../../styles";
+
+.newMessage {
+  @include position(fixed, unset, unset, 20px, 20px);
+  z-index: 1000;
+  width: 50rem;
+  max-width: calc(100vw - 40px);
+  background-color: $white;
+  border-radius: 1rem;
+  box-shadow: 0px 0px 100px -50px $black;
+  @include flex(column, stretch, flex-end, 20px);
+  padding: 20px;
+
+  & > .top {
+    @include flex(row, center, space-between);
+    padding-bottom: 10px;
+    & > h2 {
+      font-size: 2rem;
+      font-weight: 600;
+      color: $dark;
+    }
+
+    & > button {
+      font-size: 2rem;
+      color: $dark;
+      cursor: pointer;
+      background-color: transparent;
+      outline: none;
+      border: none;
+      @include center();
+      &:hover {
+        opacity: 0.7;
+      }
+    }
+  }
+
+  & > .to {
+    @include flex(column, stretch, flex-start, 7px);
+    & > p {
+      @include flex();
+      & > span {
+        font-size: 1.4rem;
+        color: $dark;
+        font-weight: 500;
+        @include center();
+
+        & > button {
+          background-color: transparent;
+          @include center();
+          color: $link;
+          outline: none;
+          border: none;
+          margin-left: 5px;
+          cursor: pointer;
+        }
+      }
+    }
+    & > div {
+      border: 1px solid $shadow-color;
+      padding: 5px 10px;
+      border-radius: 0.5rem;
+      @include flex(row, center, flex-start, 10px, wrap);
+      & > span {
+        @include flex(row, center, flex-start, 5px);
+        padding: 3px 5px;
+        border-radius: 5px;
+        background-color: $shadow-color;
+        & > img {
+          @include avatar(2rem);
+        }
+        & > span {
+          font-size: 1rem;
+          color: $dark;
+        }
+        & > button {
+          background-color: transparent;
+          border: none;
+          outline: none;
+          cursor: pointer;
+          @include center();
+        }
+      }
+      & > input {
+        flex: 1;
+        border: none;
+        outline: none;
+        background-color: transparent;
+        font-size: 1.2rem;
+      }
+    }
+  }
+
+  & > .subject {
+    @include flex(column, stretch, flex-start, 7px);
+    & > span {
+      font-size: 1.4rem;
+      color: $dark;
+      font-weight: 500;
+      @include center();
+      display: block;
+    }
+
+    & > input {
+      font-size: 1.2rem;
+      padding: 7px 10px;
+      border: 1px solid $shadow-color;
+      border-radius: 0.5rem;
+      outline: none;
+      background-color: transparent;
+      color: $dark;
+    }
+  }
+
+  & > .message {
+    @include flex(column, stretch, flex-start, 7px);
+    & > span {
+      font-size: 1.4rem;
+      color: $dark;
+      font-weight: 500;
+      @include center();
+      display: block;
+    }
+
+    & > div {
+      @include flex(column, stretch, flex-start);
+      & > textarea {
+        font-size: 1.2rem;
+        padding: 7px 10px;
+        border: 1px solid $shadow-color;
+        border-top-left-radius: 0.5rem;
+        border-top-right-radius: 0.5rem;
+        outline: none;
+        background-color: transparent;
+        color: $dark;
+        resize: none;
+        height: 10rem;
+      }
+
+      & > div {
+        @include flex(row, center, flex-start, 10px);
+        padding: 10px;
+        overflow: auto;
+        border-bottom-left-radius: 0.5rem;
+        border-bottom-right-radius: 0.5rem;
+        border: 1px solid $shadow-color;
+        border-top: none;
+
+        & > button {
+          background-color: transparent;
+          border: none;
+          outline: none;
+          color: $dark;
+          cursor: pointer;
+          @include hoverEffect();
+          font-size: 1.6rem;
+          width: 2rem;
+          aspect-ratio: 1/1;
+          @include center();
+        }
+
+        & > .divide {
+          height: 1.3rem;
+          width: 1px;
+          background-color: $shadow-color;
+        }
+      }
+    }
+  }
+
+  & > .last {
+    @include flex();
+    & > .left {
+      @include flex(row, center, flex-start, 1rem);
+      & > button {
+        background-color: transparent;
+        border: none;
+        outline: none;
+        @include center();
+        cursor: pointer;
+        background-color: $link-light;
+        padding: 1rem 1rem;
+        border-radius: 0.5rem;
+        color: $dark;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+    & > button {
+      padding: 1.2rem 1.6rem;
+      border: none;
+      background-color: $link;
+      color: $white;
+      border-radius: 0.5rem;
+      @include flex(row, center, center, 1rem);
+      cursor: pointer;
+
+      &:hover {
+        filter: saturate(2);
+      }
+
+      & > span {
+        line-height: 1;
+        @include center();
+      }
+    }
+  }
+}

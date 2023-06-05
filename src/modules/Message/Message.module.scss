@@ -1,0 +1,309 @@
+@import "../../styles";
+
+.container {
+  height: 100%;
+  width: 100%;
+  @include flex(column, stretch, flex-start);
+  overflow: hidden;
+  position: relative;
+
+  & > .bottom {
+    flex: 1;
+    overflow: auto;
+  }
+}
+
+.header {
+  @include flex();
+  margin: 10px 20px;
+  background-color: $light-gray;
+  padding: 10px 20px;
+  border-radius: 0.5rem;
+
+  @include query(600px) {
+    padding: 10px;
+  }
+
+  & button {
+    background-color: transparent;
+    outline: none;
+    border: none;
+    font-size: 1.6rem;
+    @include hoverEffect();
+    @include center();
+    cursor: pointer;
+    color: $dark;
+  }
+
+  & > .start {
+    @include flex(row, center, flex-start);
+    width: 7.8rem;
+  }
+
+  & > .middle {
+    @include flex(row, center, center, 1.5rem);
+    & > span {
+      font-weight: 500;
+      font-size: 1.2rem;
+      @include center();
+      color: $dark;
+    }
+  }
+
+  & > .end {
+    @include flex(row, center, flex-end, 1.5rem);
+  }
+}
+
+.BottomComp {
+  padding: 0px 20px;
+  @include flex(column, stretch, flex-start, 1rem);
+  & > .heading {
+    @include flex();
+
+    & > .left {
+      @include flex(row, center, flex-start, 1rem);
+      & > img {
+        @include avatar(4rem);
+      }
+
+      & > .right {
+        @include flex(column, flex-start, flex-start, 0.5rem);
+
+        & > span,
+        & > a {
+          line-height: 1;
+          font-size: 1.1rem;
+          font-weight: 500;
+          color: $dark;
+        }
+
+        & > a {
+          color: $link;
+        }
+      }
+    }
+    & > .right {
+    }
+  }
+
+  & > h3 {
+    font-size: 2rem;
+    font-weight: 600;
+    color: $dark;
+    padding: 1rem 0rem 0.5rem;
+  }
+
+  & > p {
+    font-size: 1.1rem;
+    color: $dark;
+    opacity: 0.9;
+
+    & > a {
+      color: $link;
+    }
+  }
+
+  & > .attachs {
+    @include flex(row, stretch, flex-start, 2rem, wrap);
+
+    & > .attach {
+      background-color: $light-gray;
+      padding: 1rem;
+      border-radius: 0.5rem;
+      @include flex(row, center, flex-start, 1rem);
+
+      & > .start {
+        @include center();
+        font-size: 2.5rem;
+        color: $danger;
+      }
+      & > .middle {
+        min-width: 140px;
+        & > p {
+          font-size: 1.1rem;
+          color: $dark;
+        }
+        & > span {
+          color: $dark;
+          opacity: 0.7;
+        }
+      }
+      & > .end {
+        @include center();
+        font-size: 2.5rem;
+        color: $dark;
+        opacity: 0.3;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+  }
+
+  & > .buttons {
+    @include flex(row, center, flex-start, 2rem);
+    padding: 2rem 0;
+    & > button {
+      background-color: $light-gray;
+      @include flex-inline(row, center, center, 0.5rem);
+      align-self: flex-start;
+      padding: 1rem;
+      font-size: 1.2rem;
+      border-radius: 1000rem;
+      border: none;
+      outline: none;
+      cursor: pointer;
+
+      & > span {
+        @include center();
+        line-height: 1;
+      }
+    }
+  }
+}
+
+.reply {
+  @include position(absolute, unset, 0, 0, 0);
+  background-color: $light;
+  box-shadow: 0px 0px 100px black;
+  padding: 20px;
+
+  & > .replyContainer {
+    border-radius: 1rem;
+    border: 1px solid $link;
+    padding: 10px 20px;
+
+    @include query(600px) {
+      padding: 10px;
+    }
+
+    & > .top {
+      @include flex();
+      padding-bottom: 2rem;
+      & > .left {
+        @include flex(row, center, flex-start, 1rem);
+        & > span:not(.email) {
+          font-size: 1.2rem;
+          font-weight: 500;
+          color: $dark;
+        }
+        & > span.email {
+          @include flex(row, center, flex-start, 5px);
+          padding: 3px 5px;
+          border-radius: 5px;
+          background-color: $shadow-color;
+          & > img {
+            @include avatar(2rem);
+          }
+          & > span {
+            font-size: 1rem;
+            color: $dark;
+          }
+          & > button {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            @include center();
+          }
+        }
+      }
+
+      & > .right {
+        @include flex(row, center, flex-end, 2rem);
+        & > button {
+          color: $dark;
+          background-color: $shadow-color;
+          @include center();
+          border: none;
+          outline: none;
+          padding: 1rem;
+          line-height: 1;
+          border-radius: 0.5rem;
+          cursor: pointer;
+        }
+      }
+    }
+
+    & > .bottom {
+      & > textarea {
+        width: 100%;
+        resize: none;
+        background-color: transparent;
+        border: 1px solid $shadow-color;
+        padding: 10px;
+        outline: none;
+        margin-bottom: 0.5rem;
+        border-radius: 1rem;
+        height: 10rem;
+      }
+      & > .buttons {
+        @include flex(row, center, flex-start, 10px);
+        padding: 10px;
+        overflow: auto;
+        border-radius: 0.5rem;
+        border: 1px solid $shadow-color;
+
+        & > button {
+          background-color: transparent;
+          border: none;
+          outline: none;
+          color: $dark;
+          cursor: pointer;
+          @include hoverEffect();
+          font-size: 1.6rem;
+          width: 2rem;
+          aspect-ratio: 1/1;
+          @include center();
+        }
+
+        & > .divide {
+          height: 1.3rem;
+          width: 1px;
+          background-color: $shadow-color;
+        }
+      }
+      & > .last {
+        @include flex();
+        padding-top: 10px;
+        & > .left {
+          @include flex(row, center, flex-start, 1rem);
+          & > button {
+            background-color: transparent;
+            border: none;
+            outline: none;
+            @include center();
+            cursor: pointer;
+            background-color: $link-light;
+            padding: 1rem 1rem;
+            border-radius: 0.5rem;
+            color: $dark;
+            &:hover {
+              opacity: 0.7;
+            }
+          }
+        }
+        & > button {
+          padding: 1.2rem 1.6rem;
+          border: none;
+          background-color: $link;
+          color: $white;
+          border-radius: 0.5rem;
+          @include flex(row, center, center, 1rem);
+          cursor: pointer;
+
+          &:hover {
+            filter: saturate(2);
+          }
+
+          & > span {
+            line-height: 1;
+            @include center();
+          }
+        }
+      }
+    }
+  }
+}

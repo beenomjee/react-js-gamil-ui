@@ -1,0 +1,151 @@
+@import "../../styles";
+
+.container {
+  height: 100%;
+  width: 100%;
+  @include flex(column, stretch, flex-start);
+  overflow: hidden;
+
+  & > .bottom {
+    flex: 1;
+    overflow: auto;
+  }
+}
+
+.header {
+  @include flex();
+  padding: 1rem 2rem;
+
+  & > .left {
+    @include flex(row, center, flex-start, 2rem);
+
+    & > button {
+      @include center();
+      font-size: 2rem;
+      cursor: pointer;
+      background-color: transparent;
+      border: none;
+      outline: none;
+      color: $dark;
+      position: relative;
+
+      @include hoverEffect();
+    }
+  }
+  & > .right {
+    @include flex(row, center, flex-end, 3rem);
+
+    & > .left {
+      color: $dark;
+      font-size: 1.2rem;
+      opacity: 0.7;
+    }
+    & > .right {
+      @include flex(row, center, flex-end, 2rem);
+      & > button {
+        @include center();
+        font-size: 2rem;
+        background-color: transparent;
+        border: none;
+        outline: none;
+        @include hoverEffect();
+        cursor: pointer;
+      }
+    }
+  }
+}
+
+.message {
+  padding: 5px 20px 5px 0;
+  @include flex(row, center, space-between, 3rem);
+
+  & > .left {
+    @include flex(row, center, flex-start, 1rem);
+    width: 25rem;
+    padding-left: 20px;
+    overflow: hidden;
+    @include query(600px) {
+      width: unset;
+    }
+    & > button {
+      @include center();
+      background-color: transparent;
+      border: none;
+      outline: none;
+      cursor: pointer;
+      @include hoverEffect();
+      font-size: 1.7rem;
+      color: $dark;
+      opacity: 0.9;
+    }
+
+    & > img {
+      @include avatar(4rem);
+    }
+
+    & > p {
+      white-space: nowrap;
+      font-size: 1.2rem;
+      font-weight: 600;
+      color: $dark;
+      opacity: 0.9;
+
+      @include query(600px) {
+        display: none;
+      }
+    }
+  }
+  & > .right {
+    width: 1vw;
+    @include flex(row, center, space-between, 2rem);
+    flex: 1;
+    & > .left {
+      font-size: 1.1rem;
+      flex: 1;
+      color: $dark;
+      @include flex(row, center, flex-start);
+      & > span {
+        &:first-of-type {
+          font-weight: 600;
+          white-space: nowrap;
+        }
+        &:nth-of-type(2) {
+          width: 30px;
+          height: 1px;
+          background-color: $dark;
+          opacity: 0.2;
+          margin: 0 5px;
+        }
+        &:nth-of-type(3) {
+          flex: 1;
+          overflow: hidden;
+          height: 1.4rem;
+          text-overflow: ellipsis;
+          display: -webkit-box;
+          -webkit-line-clamp: 1;
+          -webkit-box-orient: vertical;
+        }
+      }
+    }
+    & > .right {
+      white-space: nowrap;
+      @include flex(row, center, flex-end, 0.5rem);
+      font-size: 1.1rem;
+      color: $dark;
+      opacity: 0.9;
+
+      @include query(600px) {
+        display: none;
+      }
+
+      & > span {
+        @include center();
+        line-height: 1;
+        &:nth-of-type(1) {
+          transform: rotate(90deg) translate(-10%, 0);
+          transform-origin: center center;
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,133 @@
+@import "../../styles";
+
+.sidebar {
+  @include flex(column, stretch, flex-start, 3rem);
+  padding: 0 20px;
+
+  @include query(900px) {
+    padding-top: 1rem;
+  }
+  & > .top {
+    @include flex(column, stretch, flex-start, 2rem);
+    & > .top {
+      @include query(900px) {
+        display: none;
+      }
+      & > button {
+        width: 100%;
+        text-align: center;
+        padding: 1.2rem 0;
+        background-color: $link;
+        color: $white;
+        border: none;
+        outline: none;
+        border-radius: 1rem;
+        cursor: pointer;
+        font-size: 1.4rem;
+        &:hover {
+          filter: saturate(2);
+        }
+      }
+    }
+    & > .bottom {
+      @include flex(column, stretch, flex-start, 0.5rem);
+      & > a {
+        width: 100%;
+        @include flex();
+        font-size: 1.4rem;
+        padding: 1.2rem;
+        border-radius: 1rem;
+        &:hover,
+        &.selected {
+          background-color: $link-light;
+          & > .left > span {
+            color: $link;
+          }
+        }
+
+        & > .left {
+          flex: 1;
+          @include flex(row, center, flex-start, 1rem);
+          & > span {
+            line-height: 1;
+            color: $dark;
+            font-weight: 500;
+            &:first-of-type {
+              font-size: 2rem;
+            }
+          }
+        }
+        & > .right {
+          & > span {
+            line-height: 1;
+            padding: 0.5rem;
+            border-radius: 50%;
+            @include center();
+            background-color: $warning;
+            width: 25px;
+            aspect-ratio: 1/1;
+            color: $white;
+          }
+        }
+      }
+    }
+  }
+
+  & > .bottom {
+    @include flex(column, stretch, flex-start, 1.5rem);
+    padding: 1.2rem;
+
+    & > .heading {
+      @include flex(row, center, space-between);
+
+      & > h2 {
+        @include center();
+        text-transform: uppercase;
+        color: $dark;
+        opacity: 0.7;
+        @include font(1.4rem, 500);
+        line-height: 1;
+        @include center();
+      }
+      & > span {
+        @include center();
+        background-color: $link;
+        color: white;
+        font-size: 1.4rem;
+        cursor: pointer;
+        &:hover {
+          opacity: 0.7;
+        }
+      }
+    }
+
+    & > .labels {
+      @include flex(column, stretch, flex-start, 1rem);
+      & > p {
+        @include flex(row, center, flex-start, 1rem);
+        @include font(1.2rem);
+        color: $dark;
+        & > span:first-of-type {
+          width: 1.2rem;
+          aspect-ratio: 1/1;
+          border-radius: 50%;
+        }
+
+        & > span {
+          @include center();
+          line-height: 1;
+        }
+      }
+
+      & > p:nth-of-type(3n + 1) > span:first-of-type {
+        background-color: $danger;
+      }
+      & > p:nth-of-type(3n + 2) > span:first-of-type {
+        background-color: $link;
+      }
+      & > p:nth-of-type(3n + 3) > span:first-of-type {
+        background-color: $warning;
+      }
+    }
+  }
+}
